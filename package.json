@@ -1,0 +1,27 @@
+{
+  "name": "backend-zero",
+  "version": "1.0.0",
+  "description": "zero to hero",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/punnohoang/backend0-.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Punno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/punnohoang/backend0-/issues"
+  },
+  "homepage": "https://github.com/punnohoang/backend0-#readme",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
