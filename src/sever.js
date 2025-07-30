@@ -26,14 +26,13 @@ app.use('/', webRoutes)
 // test connection 
 
 
-connection.query(
-    'select * from Users u ',
+// connection.query(
+//     'select * from Users u ',
 
-    function (err, results, fields) {
-        console.log(">>>results--", results); // results contains rows returned by server
-        console.log(">>>fields--", fields); // fields contains extra meta data about results, if available
-    }
-);
+//     function (err, results, fields) {
+//         console.log(">>>results--", results); // results contains rows returned by server
+//     }
+// );
 
 
 

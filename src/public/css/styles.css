@@ -1,3 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
 .punno {
     width: 500px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+    display: flex;
+}
+
+
+
+li a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    color: #000;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }
