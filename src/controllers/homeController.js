@@ -31,6 +31,12 @@ const getPunno = (req, res) => {
     //res.send('<h1>ABC</h1>')
     res.render('sample.ejs')
 }
+
+const postCreateUsers = (req, res) => {
+    console.log(">>> req.body: ", req.body)
+    res.send('create a new user')
+}
+
 module.exports = {
-    getHomepage, getabc, getPunno
+    getHomepage, getabc, getPunno, postCreateUsers
 }
