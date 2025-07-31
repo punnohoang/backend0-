@@ -32,7 +32,7 @@ const getPunno = (req, res) => {
     res.render('sample.ejs')
 }
 
-const postCreateUsers = (req, res) => {
+const postCreateUsers = async (req, res) => {
 
     // res.send('create a new user')
 
@@ -43,24 +43,34 @@ const postCreateUsers = (req, res) => {
     // let { email, name, city } = req.body;
     //console.log(">>> email = ", email, "; name = ", name, "; city = ", city)
 
-    connection.query(
-        `INSERT INTO 
-        Users(email, name, city)
-        VALUES(?, ?, ?)`,
-        [email, name, city],
-        function (err, results) {
-            console.log(results);
+    // connection.query(
+    //     `INSERT INTO 
+    //     Users(email, name, city)
+    //     VALUES(?, ?, ?)`,
+    //     [email, name, city],
+    //     function (err, results) {
+    //         console.log(results);
+    //         res.send('Created user succeed !')
+    //     }
+    // );
 
-            res.send('Created user succeed !')
-        }
-    );
+    let [results, fields] = await connection.query(`INSERT INTO 
+         Users(email, name, city)VALUES(?, ?, ?)`, [email, name, city])
+
+    console.log(results);
+    res.send('Created user succeed !')
+
+    // const [results, fields] = await connection.query('select * from Users u')
+    // console.log(">>> check :", results)
 }
 // INSERT INTO Users  (email, name, city)
 // VALUES ('test', 'punno', 'nam dinh');
 
-
+const getCreatePage = (req, res) => {
+    res.render('create.ejs')
+}
 
 
 module.exports = {
-    getHomepage, getabc, getPunno, postCreateUsers
+    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage
 }
