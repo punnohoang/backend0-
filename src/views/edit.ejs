@@ -16,9 +16,13 @@
         </ul>
     </div>
     <div class="form-add-users">
-        <form action="/create-user" method="post">
+        <form action="/update-user" method="post">
             <fieldset>
                 <legend>Update A users:</legend>
+                <div class="input-group d-none">
+                    <label>Id: </label>
+                    <input type="text" name="userId" value="<%=userEdit.id%>">
+                </div>
                 <div class="input-group">
                     <label>Email: </label>
                     <input type="text" name="email" value="<%=userEdit.email%>">

@@ -1,6 +1,6 @@
 
 const connection = require('../config/database')
-const { getAllUsers, getUserById } = require('../services/CRUDService')
+const { getAllUsers, getUserById, updateUserById } = require('../services/CRUDService')
 
 
 const getHomepage = async (req, res) => {
@@ -57,14 +57,34 @@ const postCreateUsers = async (req, res) => {
     let [results, fields] = await connection.query(`INSERT INTO 
          Users(email, name, city)VALUES(?, ?, ?)`, [email, name, city])
 
-    console.log(results);
-    res.send('Created user succeed !')
+    // console.log(results);
+    res.redirect('/')
+    // res.send('Created user succeed !')
 
     // const [results, fields] = await connection.query('select * from Users u')
     // console.log(">>> check :", results)
 }
+
 // INSERT INTO Users  (email, name, city)
 // VALUES ('test', 'punno', 'nam dinh');
+
+
+
+const postUpdateUsers = async (req, res) => {
+
+    let userId = req.body.userId;
+    let email = req.body.email;
+    let name = req.body.name;
+    let city = req.body.city;
+
+    await updateUserById(email, city, name, userId)
+
+    // res.send('Updated user succeed !')
+    res.redirect('/');
+
+
+}
+
 
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
@@ -77,5 +97,5 @@ const getUpdatePage = async (req, res) => {
 
 
 module.exports = {
-    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage
+    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage, postUpdateUsers
 }

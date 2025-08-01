@@ -1,5 +1,5 @@
 const express = require('express') // commomjs
-const { getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage } = require('../controllers/homeController')
+const { getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage, postUpdateUsers } = require('../controllers/homeController')
 const router = express.Router();
 
 // router.Method('/route',handler)
@@ -12,5 +12,6 @@ router.get('/create', getCreatePage)
 router.get('/update/:id', getUpdatePage)
 
 router.post('/create-user', postCreateUsers)
+router.post('/update-user', postUpdateUsers)
 
 module.exports = router
