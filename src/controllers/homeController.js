@@ -69,8 +69,18 @@ const postCreateUsers = async (req, res) => {
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
+const getUpdatePage = async (req, res) => {
+    const userId = req.params.id;
+
+    let [results, fields] = await connection.query('select * from Users where id =?', [userId]);
+    // console.log(results);
+
+
+    let user = results && results.length > 0 ? results[0] : {};
+    res.render('edit.ejs', { userEdit: user })
+}
 
 
 module.exports = {
-    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage
+    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage
 }

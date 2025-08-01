@@ -47,10 +47,10 @@
                 </tr>
                 <%} %> -->
 
-            <% listUsers.forEach(function(user, index){%>
+            <% listUsers.forEach(function(user){%>
                 <tr>
                     <td>
-                        <%= user.id %> - <%= index %>
+                        <%= user.id %>
                     </td>
                     <td>
                         <%= user.email %>
@@ -62,7 +62,7 @@
                         <%= user.city %>
                     </td>
                     <td>
-                        <button>Edit</button>
+                        <a href="/update/<%= user.id %>">Edit</a>
                         <button>Delete</button>
                     </td>
                 </tr>
