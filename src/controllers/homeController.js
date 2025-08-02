@@ -1,6 +1,6 @@
 
 const connection = require('../config/database')
-const { getAllUsers, getUserById, updateUserById } = require('../services/CRUDService')
+const { getAllUsers, getUserById, updateUserById, deleteUserById } = require('../services/CRUDService')
 
 
 const getHomepage = async (req, res) => {
@@ -80,9 +80,14 @@ const postUpdateUsers = async (req, res) => {
     await updateUserById(email, city, name, userId)
 
     // res.send('Updated user succeed !')
-    res.redirect('/');
+    res.send(`
+    <script>
+        alert("Updated user succeed !");
+        window.location.href = "/";
+    </script>
+    `);
 
-
+    //res.redirect('/');
 }
 
 
@@ -96,6 +101,21 @@ const getUpdatePage = async (req, res) => {
 }
 
 
+const postDeleteUsers = async (req, res) => {
+    const Id = req.body.userId;
+    await deleteUserById(Id)
+    res.redirect('/')
+
+    // res.send(`
+    // <script>
+    //     alert("Deleted user succeed !");
+    //     window.location.href = "/";
+    // </script>
+    // `);
+}
+
 module.exports = {
-    getHomepage, getabc, getPunno, postCreateUsers, getCreatePage, getUpdatePage, postUpdateUsers
+    getHomepage, getabc, getPunno, postCreateUsers,
+    getCreatePage, getUpdatePage, postUpdateUsers,
+    postDeleteUsers
 }
